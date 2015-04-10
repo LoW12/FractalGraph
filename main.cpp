@@ -1,36 +1,12 @@
-FractalGraph : a C++ implementation of Nested Graphs
-===============================================
+#include <iostream>
 
-![](https://github.com/LoW12/FractalGraph/blob/master/img/Logo_FractalGraph.png)
+#include "CGraph.h"
 
-FractalGraph is a C++ framework which enables the creation of complex data structures based on nested graphs.
-
-Nested graphs, also called 'Fractal graphs', are graphs which nodes can themself be graphs.
-
-
-
-
-Why to choose it?
-=================
-
-FractalGraph can be used to model complex data structures. It aims at being simple wile also being fast and reliable. It can be easily integrated into your projects.
-
-
-Features :
-----------
-- Creation of Fractal graphs
-- Support arcs with data (using template)
-- Support export to dot (graphviz: using fdp layer which support cluster)
-
-Quick example
-==============
-![](https://github.com/LoW12/FractalGraph/blob/master/img/Exemple_git.png)
-
-```cpp
-
-	#include "CGraph.h"
-
-	//The lower level (0)  nodes of the fractal graph on the left
+int main()
+{
+    try
+    {
+       //The lower level (0)  nodes of the fractal graph on the left
 	CGraph<int> * cSub1Sub1Sub1 = new CGraph<int>("A1");
 	CGraph<int> * cSub1Sub1Sub2 = new CGraph<int>("A2");
 
@@ -84,26 +60,10 @@ Quick example
 	
 	//Export as dot
 	cGraph->SaveAsDot("graph.dot");
-```
-
-How to compile
-==============
-Compile example : 
-
-- g++ -o yourProgram main.cpp
-
-
-Contacts
-========
-
-Maintainers: 
-
-- Bride Hadrien (hadrien.bride@femto-st.fr).
-- Rousset Alban (alban.rousset@femto-st.fr).
-
-Please let us know on how you use FractalGraph.
-
-License
-=======
-
-FractalGraph is available under the GNU license. See the LICENSE file for more info.
+    }
+    catch ( LDException * e )
+    {
+        std::cout << "Exception was caught: " << e->what() << std::endl;
+    }
+  return 0;
+}
